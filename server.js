@@ -1,4 +1,5 @@
 'use strict';
+require('dotenv').config();
 
 const Q = require('@nmq/q/server');
 
@@ -9,7 +10,8 @@ db.monitorEvent('create');
 db.monitorEvent('read');
 db.monitorEvent('update');
 db.monitorEvent('delete');
+db.monitorEvent('error');
 
-const network = new Q('network');
-network.monitorEvent('file-save');
-network.monitorEvent('file-error');
+const file = new Q('file');
+file.monitorEvent('file-save');
+file.monitorEvent('file-error');
